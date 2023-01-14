@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name:Plantuml
+# key: plantuml
+# --
+
+#+begin_src plantuml :file $1
+$2
+#+end_src
