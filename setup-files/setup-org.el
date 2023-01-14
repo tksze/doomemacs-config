@@ -3,7 +3,16 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'doom-lib)
+(defvar org-directory)
+(defvar org-agenda-files)
+(defvar org-todo-keywords)
+(defvar org-todo-keyword-faces)
+(defvar org-log-done)
+(defvar org-log-into-drawer)
+(defvar org-tags-column)
+(defvar org-agenda-window-setup)
+(defvar org-hide-emphasis-markers)
+(defvar org-pretty-entities)
 
 ;; Org directory path
 (when (eq system-type 'darwin)
@@ -24,7 +33,7 @@
 )
 
 ;; Todo setup
-(after! org
+(after! 'org
       (setq org-todo-keywords
               '((sequence "TODO(t!)" "INPROGRESS(s!)""|" "DONE(d!)" "CANCELLED(c@/!)")))
 

@@ -29,7 +29,7 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-(when IS-MAC
+(when (eq system-type 'darwin)
     (add-hook 'window-setup-hook #'toggle-frame-maximized)
 )
 
