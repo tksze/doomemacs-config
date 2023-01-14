@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "STK"
+(setq user-full-name "tksze"
       user-mail-address "")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
@@ -33,27 +33,6 @@
     (add-hook 'window-setup-hook #'toggle-frame-maximized)
 )
 
-(when IS-MAC
-  (when (display-graphic-p)
-    (defun set-font (english chinese english-size chinese-size)
-      (set-face-attribute 'default nil :font
-                          (format   "%s:pixelsize=%d"  english english-size))
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family chinese :size chinese-size))))
-    (set-font "Mononoki" "LXGW Wenkai Mono" 14 16)
-    ))
-
-(when IS-WINDOWS
-  (when (display-graphic-p)
-    (defun set-font (english chinese english-size chinese-size)
-      (set-face-attribute 'default nil :font
-                          (format   "%s:pixelsize=%d"  english english-size))
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family chinese :size chinese-size))))
-    (set-font "Mononoki" "霞鹜文楷等宽" 15 18)
-    ))
 ;; The chinese font size please be x1.2 of latin font, other wise the line
 ;; height will be incompatible
 
@@ -73,9 +52,9 @@
 
 (when IS-MAC
     (setq org-directory
-          "/Users/user/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
+          "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
           org-agenda-files
-          '("/Users/user/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")
+          '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")
           )
 
     (setq org-plantuml-jar-path (expand-file-name "/usr/local/Cellar/plantuml/1.2023.0/libexec/plantuml.jar"))
@@ -83,9 +62,9 @@
 
 (when IS-WINDOWS
     (setq org-directory
-          "C:\\Users\\josts\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org"
+          "$HOME\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org"
           org-agenda-files
-          '("C:\\Users\\josts\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org\\gtd.org")
+          '("$HOME\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org\\gtd.org")
     )
 )
 
@@ -172,23 +151,8 @@
 
 (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
 
-;; random id generator
-(defun random-alnum ()
-  (let* ((alnum "abcdefghijklmnopqrstuvwxyz0123456789")
-         (i (% (abs (random)) (length alnum))))
-    (substring alnum i (1+ i))))
+;; load directory of setup files
+(add-load-path! "~/.doom.d/setup-files")
 
-(defun random-7-letter-string ()
-  (interactive)
-  (insert
-   (concat
-    (random-alnum)
-    (random-alnum)
-    (random-alnum)
-    (random-alnum)
-    (random-alnum)
-    (random-alnum)
-    (random-alnum))))
-
-(global-set-key (kbd "<f2>") 'random-7-letter-string)
-
+(require 'setup-idGen)
+(require 'setup-font)
