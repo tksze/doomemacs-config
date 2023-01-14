@@ -11,14 +11,14 @@
     (set-fontset-font (frame-parameter nil 'font) charset
                       (font-spec :family chinese :size chinese-size))))
 
-(when IS-MAC
+(when (eq system-type 'darwin)
   (when (display-graphic-p)
     (set-font "Mononoki" "LXGW Wenkai Mono" 14 16)
     ))
 
-(when IS-WINDOWS
+(when (memq system-type '(cygwin windows-nt ms-dos))
   (when (display-graphic-p)
-    (set-font "Mononoki" "霞鹜文楷等宽" 15 18)
+    (set-font "Mononoki" "霞鹜文楷等宽" 18 18)
     ))
 
 (provide 'setup-font)

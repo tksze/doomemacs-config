@@ -1,9 +1,10 @@
 ;;; setup-keymap.el --- Key binding -*- lexical-binding: t; -*-
 
-;;; Comment:
+;;; Commentary:
 
 ;;; Code:
 (require 'evil)
+(require 'doom-keybinds)
 
 ;; Window spliting
 (map! :leader :desc "split window vertically and follow" :e "w \\" #'+evil/window-vsplit-and-follow

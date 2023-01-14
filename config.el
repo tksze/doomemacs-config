@@ -50,23 +50,6 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 
-(when IS-MAC
-    (setq org-directory
-          "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
-          org-agenda-files
-          '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")
-          )
-
-    (setq org-plantuml-jar-path (expand-file-name "/usr/local/Cellar/plantuml/1.2023.0/libexec/plantuml.jar"))
-)
-
-(when IS-WINDOWS
-    (setq org-directory
-          "$HOME\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org"
-          org-agenda-files
-          '("$HOME\\iCloudDrive\\iCloud~com~appsonthemove~beorg\\org\\gtd.org")
-    )
-)
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -103,31 +86,6 @@
 
 (setq doom-themes-neotree-file-icons 't)
 
-;; Org todo personal setup
-(after! org
-      (setq org-todo-keywords
-              '((sequence "TODO(t!)" "INPROGRESS(s!)""|" "DONE(d!)" "CANCELLED(c@/!)")))
-
-
-      (setq org-todo-keyword-faces
-              '(("TODO" .   (:foreground "pink" :weight bold))
-                ("INPROGRESS" . (:foreground "yellow" :weight bold))
-                ("DONE" .      (:foreground "green" :weight bold))
-                ("CANCELLED" .     (:foreground "green" :weight bold))
-                )
-              )
-
-      ;; log DONE time, `note` value wiil ask you to write a note.
-      (setq org-log-done 'time
-            org-log-into-drawer 't
-            org-tags-column '-80
-            org-agenda-window-setup 'other-window
-            org-hide-emphasis-markers 't
-            org-pretty-entities 't
-            )
-)
-;; org prettier
-(add-hook 'org-mode-hook #'valign-mode)
 
 ;; (use-package! mixed-pitch
 ;;    :hook
@@ -137,11 +95,6 @@
 (setq xenops-font-height '140
       xenops-font-height-code '120)
 
-;; Window spliting
-(map! :leader :desc "split window vertically and follow" :e "w \\" #'+evil/window-vsplit-and-follow
-      :leader :desc "split window vertically" :e "w |" #'evil-window-vsplit
-      :leader :desc "split window horizontally and follow" :e "w -" #'+evil/window-split-and-follow
-      :leader :desc "split window horizontally" :e "w _" #'evil-window-split)
 
 ;; Set timestamp in org is English
 (setq system-time-locale "C")
@@ -149,10 +102,12 @@
 
 (setq find-program "fd")
 
-(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
 
 ;; load directory of setup files
 (add-load-path! "~/.doom.d/setup-files")
 
 (require 'setup-idGen)
 (require 'setup-font)
+(require 'setup-plantuml)
+(require 'setup-keymap)
+(require 'setup-org)
