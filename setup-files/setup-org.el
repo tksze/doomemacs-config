@@ -33,7 +33,7 @@
 )
 
 ;; Todo setup
-(after! 'org
+(after! org
       (setq org-todo-keywords
               '((sequence "TODO(t!)" "INPROGRESS(s!)""|" "DONE(d!)" "CANCELLED(c@/!)")))
 
