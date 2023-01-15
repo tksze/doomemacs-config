@@ -26,9 +26,9 @@
 
 (when (memq system-type '(cygwin windows-nt ms-dos))
     (setq org-directory
-          "C:/Users/josts/iCloudDrive/iCloud~com~appsonthemove~beorg/org"
+          "~/iCloudDrive/iCloud~com~appsonthemove~beorg/org"
           org-agenda-files
-          '("C:/Users/josts/iCloudDrive/iCloud~com~appsonthemove~beorg/org/gtd.org")
+          '("~/iCloudDrive/iCloud~com~appsonthemove~beorg/org/gtd.org")
     )
 )
 
