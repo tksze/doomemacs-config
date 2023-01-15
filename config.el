@@ -102,6 +102,7 @@
 
 (setq find-program "fd")
 
+(setq fancy-splash-image (concat doom-private-dir "img/ue-colorful.png"))
 
 ;; load directory of setup files
 (add-load-path! "~/.doom.d/setup-files")
