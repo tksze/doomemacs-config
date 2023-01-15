@@ -87,15 +87,6 @@
 (setq doom-themes-neotree-file-icons 't)
 
 
-;; (use-package! mixed-pitch
-;;    :hook
-;;    (text-mode . mixed-pitch-mode))
-
-;; Xenops setting
-(setq xenops-font-height '140
-      xenops-font-height-code '120)
-
-
 ;; Set timestamp in org is English
 (setq system-time-locale "C")
 (set-language-environment 'UTF-8)
@@ -112,3 +103,4 @@
 (require 'setup-plantuml)
 (require 'setup-keymap)
 (require 'setup-org)
+(require 'setup-latex)
