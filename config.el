@@ -89,6 +89,15 @@
 (setq system-time-locale "C")
 (set-language-environment 'UTF-8)
 
+;;解决粘贴中文出现乱码的问题
+(if (eq system-type 'windows-nt)
+(progn
+;; (setq selection-coding-system 'utf-16le-dos) ;;修复从网页剪切文本过来时显示 \nnn \nnn 的问题
+(set-default selection-coding-system 'utf-16le-dos)
+(set-selection-coding-system 'utf-16le-dos) ;;别名set-clipboard-coding-system
+)
+(set-selection-coding-system 'utf-8))
+
 (setq find-program "fd")
 
 (setq fancy-splash-image (concat doom-private-dir "extra/ue-colorful-resize.png"))
