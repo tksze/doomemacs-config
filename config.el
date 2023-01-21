@@ -39,7 +39,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'tsdh-dark)
+(setq doom-theme 'doom-one-light)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -100,7 +100,7 @@
 
 (setq find-program "fd")
 
-(setq fancy-splash-image (concat doom-private-dir "extra/ue-colorful-resize.png"))
+(setq fancy-splash-image (concat doom-user-dir "extra/ue-colorful-resize.png"))
 
 ;; load directory of setup files
 (add-load-path! "~/.doom.d/setup-files")
@@ -111,3 +111,4 @@
 (require 'setup-keymap)
 (require 'setup-org)
 (require 'setup-latex)
+(require 'setup-encrypt)

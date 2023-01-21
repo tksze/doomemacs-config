@@ -47,14 +47,40 @@
               )
 
       ;; Relevant settings
-      (setq org-log-done 'time                          ;; Event when toggle DONE, `note' also provided
-            org-log-into-drawer 't                      ;; Record status change in log block
-            org-tags-column '-80
-            org-agenda-window-setup 'other-window
-            org-hide-emphasis-markers 't
-            org-pretty-entities 't
+      (setq
+        org-log-done 'time                          ;; Event when toggle DONE, `note' also provided
+        org-log-into-drawer t                      ;; Record status change in log block
+        org-pretty-entities t
+        org-enforce-todo-dependencies t
+
+        ;; Edit settings
+        org-auto-align-tags nil
+        org-tags-column 0
+        org-catch-invisible-edits 'show-and-error
+        org-special-ctrl-a/e t
+        org-insert-heading-respect-content t
+
+        ;; Org styling, hide markup etc.
+        org-hide-emphasis-markers t
+        org-pretty-entities t
+        org-ellipsis "…"
+
+        ;; Agenda styling
+        org-agenda-window-setup 'other-window
+        org-agenda-tags-column 0
+        org-agenda-block-separator ?─
+        org-agenda-time-grid
+        '((daily today require-timed)
+        (800 1000 1200 1400 1600 1800 2000)
+        " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+        org-agenda-current-time-string
+        "⭠ now ─────────────────────────────────────────────────"
             )
 )
+
+
+;; Org Capture
+
 
 
 ;; Valign: table alignment for Chinese mix English
