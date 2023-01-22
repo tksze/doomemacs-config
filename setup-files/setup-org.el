@@ -26,7 +26,8 @@
 )
 
 (setq org-agenda-files
-        '((concat org-directory "/gtd.org")))
+      (list
+       (concat org-directory "/gtd.org")))
 
 
 ;; Todo setup
@@ -72,7 +73,7 @@
         org-agenda-current-time-string
         "⭠ now ─────────────────────────────────────────────────"
         org-agenda-start-with-clockreport-mode t
-        org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 2))
+        org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 3))
 )
 
 
