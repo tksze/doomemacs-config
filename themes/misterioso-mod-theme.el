@@ -3,7 +3,7 @@
 
 (custom-theme-set-faces
  'misterioso-mod
- '(default ((t (:family "mononoki" :foundry "nil" :width normal :height 141 :weight normal :slant normal :underline nil :overline nil :extend nil :strike-through nil :box nil :inverse-video nil :foreground "#e1e1e0" :background "#2d3743" :stipple nil :inherit nil))))
+ '(default ((t (:family "mononoki" :foundry "nil" :width normal :weight normal :slant normal :underline nil :overline nil :extend nil :strike-through nil :box nil :inverse-video nil :foreground "#e1e1e0" :background "#2d3743" :stipple nil :inherit nil))))
  '(cursor ((((background light)) (:background "black")) (((background dark)) (:background "white"))))
  '(fixed-pitch ((t (:family "Monospace"))))
  '(variable-pitch ((((type w32)) (:foundry "outline" :family "Arial")) (t (:family "Sans Serif"))))

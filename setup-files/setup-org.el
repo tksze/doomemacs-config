@@ -18,17 +18,17 @@
 (cond
         ((eq system-type 'darwin)
         (setq org-directory
-                "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
-                org-agenda-files
-                '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")))
-
+                "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
 
         ((memq system-type '(cygwin windows-nt ms-dos))
         (setq org-directory
-                "~/iCloudDrive/iCloud~com~appsonthemove~beorg/org"
-                org-agenda-files
-                '("~/iCloudDrive/iCloud~com~appsonthemove~beorg/org/gtd.org")))
+                "~/iCloudDrive/iCloud~com~appsonthemove~beorg/org"))
 )
+
+(setq org-agenda-files
+        '((concat org-directory "/gtd.org")))
+
+
 ;; Todo setup
 (after! org
       (setq org-todo-keywords
@@ -65,14 +65,14 @@
         ;; Agenda styling
         org-agenda-window-setup 'other-window
         org-agenda-tags-column 0
-        org-agenda-block-separator ?─
         org-agenda-time-grid
         '((daily today require-timed)
-        (800 1000 1200 1400 1600 1800 2000 2200 2400)
+        (800 1000 1200 1400 1600 1800 2000 2200)
         " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
         org-agenda-current-time-string
         "⭠ now ─────────────────────────────────────────────────"
-        org-agenda-start-with-clockreport-mode t)
+        org-agenda-start-with-clockreport-mode t
+        org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 2))
 )
 
 
