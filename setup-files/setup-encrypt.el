@@ -10,14 +10,20 @@
 ;; encrypted before the file hits your SSD or harddisk
 (org-crypt-use-before-save-magic)
 
-;; ensures things don’t get confused if an encrypted item has children
-(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq
+ ;; ensures things don’t get confused if an encrypted item has children
+ org-tags-exclude-from-inheritance (quote ("crypt"))
 
-;; Passphrase encryption only
-(setq org-crypt-key nil)
+ ;; Passphrase encryption only
+ org-crypt-key nil
 
+ ;; Cache passphrase, no need to enter it on save
+ epa-file-cache-passphrase-for-symmetric-encryption t
 
-;;(setq epa-pinentry-mode 'loopback) ;; MacOS input hack
+ ;; MacOS input hack
+ ;;epa-pinentry-mode 'loopback
+)
+
 
 (provide 'setup-encrypt)
-;;; setup-encrypt ends here
+;;; setup-encrypt.el ends here

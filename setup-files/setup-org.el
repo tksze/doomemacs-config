@@ -15,23 +15,20 @@
 (defvar org-pretty-entities)
 
 ;; Org directory path
-(when (eq system-type 'darwin)
-    (setq org-directory
-          "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
-          org-agenda-files
-          '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")
-          )
+(cond
+        ((eq system-type 'darwin)
+        (setq org-directory
+                "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"
+                org-agenda-files
+                '("~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gtd.org")))
 
+
+        ((memq system-type '(cygwin windows-nt ms-dos))
+        (setq org-directory
+                "~/iCloudDrive/iCloud~com~appsonthemove~beorg/org"
+                org-agenda-files
+                '("~/iCloudDrive/iCloud~com~appsonthemove~beorg/org/gtd.org")))
 )
-
-(when (memq system-type '(cygwin windows-nt ms-dos))
-    (setq org-directory
-          "~/iCloudDrive/iCloud~com~appsonthemove~beorg/org"
-          org-agenda-files
-          '("~/iCloudDrive/iCloud~com~appsonthemove~beorg/org/gtd.org")
-    )
-)
-
 ;; Todo setup
 (after! org
       (setq org-todo-keywords
@@ -63,7 +60,7 @@
         ;; Org styling, hide markup etc.
         org-hide-emphasis-markers t
         org-pretty-entities t
-        org-ellipsis "…"
+        ;;org-ellipsis "…"
 
         ;; Agenda styling
         org-agenda-window-setup 'other-window
@@ -71,16 +68,33 @@
         org-agenda-block-separator ?─
         org-agenda-time-grid
         '((daily today require-timed)
-        (800 1000 1200 1400 1600 1800 2000)
+        (800 1000 1200 1400 1600 1800 2000 2200 2400)
         " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
         org-agenda-current-time-string
         "⭠ now ─────────────────────────────────────────────────"
-            )
+        org-agenda-start-with-clockreport-mode t)
 )
 
 
 ;; Org Capture
-
+(after! org-capture
+  (setq org-capture-templates
+        '(
+          ("t" "Todo" entry
+           (file+headline "gtd.org" "Inbox")
+           "* %^{task} %^g\n%i\n%a" :prepend t)
+          ("n" "Notes" entry
+           (file+headline +org-capture-notes-file "Inbox")
+           "* %u %?\n%i\n%a" :prepend t)
+          ("j" "Journal" entry
+           (file+olp+datetree +org-capture-journal-file)
+           "* %U %?\n%i\n%a" :prepend t)
+          ("p" "Password" entry
+           (file "password.org.gpg")
+           "* %^{title} %^g\n\n  - ACC: %^{ACC}\n  - PW: %^{Password}")
+          )
+        )
+)
 
 
 ;; Valign: table alignment for Chinese mix English

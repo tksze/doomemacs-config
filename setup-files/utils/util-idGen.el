@@ -1,4 +1,4 @@
-;;; setup-idGen.el --- 7 letters string random generator -*- lexical-binding: t; -*-
+;;; util-idGen.el --- 7 letters string random generator -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -24,6 +24,6 @@
 
 (global-set-key (kbd "<f2>") 'random-7-letter-string)
 
-(provide 'setup-idGen)
+(provide 'util-idGen)
 
-;;; setup-idGen.el ends here
+;;; util-idGen.el ends here

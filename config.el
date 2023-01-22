@@ -39,7 +39,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one-light)
+(setq doom-theme 'misterioso-mod)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -91,24 +91,29 @@
 
 ;;解决粘贴中文出现乱码的问题
 (if (eq system-type 'windows-nt)
-(progn
-;; (setq selection-coding-system 'utf-16le-dos) ;;修复从网页剪切文本过来时显示 \nnn \nnn 的问题
-(set-default selection-coding-system 'utf-16le-dos)
-(set-selection-coding-system 'utf-16le-dos) ;;别名set-clipboard-coding-system
-)
-(set-selection-coding-system 'utf-8))
+  (progn
+    ;; (setq selection-coding-system 'utf-16le-dos) ;;修复从网页剪切文本过来时显示 \nnn \nnn 的问题
+    (set-default selection-coding-system 'utf-16le-dos)
+    (set-selection-coding-system 'utf-16le-dos) ;;别名set-clipboard-coding-system
+    )
+  (set-selection-coding-system 'utf-8))
 
 (setq find-program "fd")
 
 (setq fancy-splash-image (concat doom-user-dir "extra/ue-colorful-resize.png"))
 
+
 ;; load directory of setup files
 (add-load-path! "~/.doom.d/setup-files")
 
-(require 'setup-idGen)
 (require 'setup-font)
 (require 'setup-plantuml)
 (require 'setup-keymap)
 (require 'setup-org)
 (require 'setup-latex)
 (require 'setup-encrypt)
+
+
+;; load tools
+(add-load-path! "~/.doom.d/setup-files/utils")
+(require 'util-idGen)
