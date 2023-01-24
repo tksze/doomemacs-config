@@ -3,16 +3,10 @@
 ;;; Commentary:
 
 ;;; Code:
-(defvar org-directory)
-(defvar org-agenda-files)
-(defvar org-todo-keywords)
-(defvar org-todo-keyword-faces)
-(defvar org-log-done)
-(defvar org-log-into-drawer)
-(defvar org-tags-column)
-(defvar org-agenda-window-setup)
-(defvar org-hide-emphasis-markers)
-(defvar org-pretty-entities)
+(require 'org)
+(require 'org-agenda)
+(require 'org-capture)
+(require 'valign)               ;; Table alignment for mixed chinese and english
 
 ;; Org directory path
 (cond
@@ -27,18 +21,20 @@
 
 (setq org-agenda-files
       (list
-       (concat org-directory "/gtd.org")))
+       (concat org-directory "/gtd.org")
+       (concat org-directory "/inbox.org")
+       (concat org-directory "/tickler.org")))
 
 
 ;; Todo setup
 (after! org
       (setq org-todo-keywords
-              '((sequence "TODO(t!)" "INPROGRESS(s!)""|" "DONE(d!)" "CANCELLED(c@/!)")))
+              '((sequence "TODO(t!)" "WAITING(s!)""|" "DONE(d!)" "CANCELLED(c@/!)")))
 
 
       (setq org-todo-keyword-faces
               '(("TODO" .   (:foreground "pink" :weight bold))
-                ("INPROGRESS" . (:foreground "yellow" :weight bold))
+                ("WAITING" . (:foreground "orange" :weight bold))
                 ("DONE" .      (:foreground "green" :weight bold))
                 ("CANCELLED" .     (:foreground "green" :weight bold))
                 )
@@ -54,7 +50,7 @@
         ;; Edit settings
         org-auto-align-tags nil
         org-tags-column 0
-        org-catch-invisible-edits 'show-and-error
+        org-fold-catch-invisible-edits 'show-and-error
         org-special-ctrl-a/e t
         org-insert-heading-respect-content t
 
@@ -77,28 +73,31 @@
 )
 
 
-;; Org Capture
-(after! org-capture
+;;; Org Capture
+(after! org
   (setq org-capture-templates
         '(
           ("t" "Todo" entry
-           (file+headline "gtd.org" "Inbox")
-           "* %^{task} %^g\n%i\n%a" :prepend t)
+           (file "inbox.org")
+           "* %^{task} %^G\n%i\n%a" :prepend t)
           ("n" "Notes" entry
            (file+headline +org-capture-notes-file "Inbox")
            "* %u %?\n%i\n%a" :prepend t)
           ("j" "Journal" entry
-           (file+olp+datetree +org-capture-journal-file)
-           "* %U %?\n%i\n%a" :prepend t)
+           (file+olp+datetree "journal.org")
+           "* %U %?\n%i\n%a")
           ("p" "Password" entry
            (file "password.org.gpg")
            "* %^{title} %^g\n\n  - ACC: %^{ACC}\n  - PW: %^{Password}")
+          ("c" "Clipping" entry
+           (file+headline "clipping.org" "Inbox")
+           "* %u %?\n%i\n%a" :prepend t)
           )
         )
 )
 
 
-;; Valign: table alignment for Chinese mix English
+;;; Valign
 (add-hook 'org-mode-hook #'valign-mode)
 
 (provide 'setup-org)

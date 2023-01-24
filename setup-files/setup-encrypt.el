@@ -22,7 +22,7 @@
 
  ;; MacOS input hack
  ;;epa-pinentry-mode 'loopback
-)
+ )
 
 
 (provide 'setup-encrypt)
