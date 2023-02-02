@@ -64,7 +64,7 @@
         org-agenda-tags-column 0
         org-agenda-time-grid
         '((daily today require-timed)
-        (800 1000 1200 1400 1600 1800 2000 2200)
+        (600 900 1200 1500 1800 2100 2400)
         " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
         org-agenda-current-time-string
         "⭠ now ─────────────────────────────────────────────────"
