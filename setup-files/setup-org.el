@@ -45,7 +45,7 @@
         org-log-done 'time                          ;; Event when toggle DONE, `note' also provided
         org-log-into-drawer t                      ;; Record status change in log block
         org-pretty-entities t
-        org-enforce-todo-dependencies t
+        org-enforce-todo-dependencies t         ;; All subtree must be done to toogle done
 
         ;; Edit settings
         org-auto-align-tags nil
@@ -64,12 +64,14 @@
         org-agenda-tags-column 0
         org-agenda-time-grid
         '((daily today require-timed)
-        (600 900 1200 1500 1800 2100 2400)
+        (600 900 1200 1500 1800 2100)
         " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
         org-agenda-current-time-string
-        "⭠ now ─────────────────────────────────────────────────"
+        "⭠ now ─────────────────────────"
         org-agenda-start-with-clockreport-mode t
-        org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 3))
+        org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 3)
+        org-agenda-start-on-weekday 0
+        org-agenda-span 'week)
 )
 
 
