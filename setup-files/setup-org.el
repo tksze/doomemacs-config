@@ -71,7 +71,8 @@
         org-agenda-start-with-clockreport-mode t
         org-agenda-clockreport-parameter-plist '(:link nil :maxlevel 3)
         org-agenda-start-on-weekday 0
-        org-agenda-span 'week)
+        org-agenda-span 'week
+        org-agenda-start-day nil)
 )
 
 
