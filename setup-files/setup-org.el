@@ -21,9 +21,9 @@
 
 (setq org-agenda-files
       (list
-       (concat org-directory "/gtd.org")
-       (concat org-directory "/inbox.org")
-       (concat org-directory "/tickler.org")))
+       (concat org-directory "/gtd/gtd.org")
+       (concat org-directory "/gtd/inbox.org")
+       (concat org-directory "/gtd/tickler.org")))
 
 
 ;; Todo setup
@@ -81,10 +81,10 @@
   (setq org-capture-templates
         '(
           ("t" "Todo" entry
-           (file "inbox.org")
+           (file "gtd/inbox.org")
            "* %^{task} %^G\n%i\n%a" :prepend t)
           ("n" "Notes" entry
-           (file+headline +org-capture-notes-file "Inbox")
+           (file+headline "notes.org" "Inbox")
            "* %u %?\n%i\n%a" :prepend t)
           ("j" "Journal" entry
            (file+olp+datetree "journal.org")
