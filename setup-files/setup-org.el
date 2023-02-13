@@ -91,7 +91,7 @@
            "* %U %?\n%i\n%a")
           ("p" "Password" entry
            (file "password.org.gpg")
-           "* %^{title} %^g\n\n  - ACC: %^{ACC}\n  - PW: %^{Password}")
+           "* %^{title} %^g\n\n  - ACC: %^{ACC}\n  - PW: %^{Password}\n%a")
           ("c" "Clipping" entry
            (file+headline "clipping.org" "Inbox")
            "* %u %?\n%i\n%a" :prepend t)
